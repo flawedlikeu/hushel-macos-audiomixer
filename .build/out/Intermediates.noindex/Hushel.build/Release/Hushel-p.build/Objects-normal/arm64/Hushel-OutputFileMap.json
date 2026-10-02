@@ -1,0 +1,31 @@
+{
+  "" : {
+    "const-values" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary.swiftconstvalues",
+    "dependencies" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary.d",
+    "diagnostics" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary.dia",
+    "emit-module-dependencies" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary-emit-module.dia",
+    "pch" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Hushel-primary.swiftdeps"
+  },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/App.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/App.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/App.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/App.o"
+  },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/AppTap.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/AppTap.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/AppTap.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/AppTap.o"
+  },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/CoreAudioHelpers.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/CoreAudioHelpers.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/CoreAudioHelpers.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/CoreAudioHelpers.o"
+  },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/Mixer.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.o"
+  }
+}

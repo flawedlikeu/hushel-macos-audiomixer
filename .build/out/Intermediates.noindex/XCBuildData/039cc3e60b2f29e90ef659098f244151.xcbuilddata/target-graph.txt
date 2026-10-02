@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+Target 'AllExcludingTests' in project 'Aggregate'
+➜ Explicit dependency on target 'Hushel-product' in project 'Hushel'
+Target 'Hushel-product' in project 'Hushel' (no dependencies)
