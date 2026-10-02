@@ -9,6 +9,7 @@ private func address(_ selector: AudioObjectPropertySelector) -> AudioObjectProp
     )
 }
 
+/// Все аудио-процессы, известные системе.
 func audioProcessList() -> [AudioObjectID] {
     let system = AudioObjectID(kAudioObjectSystemObject)
     var addr = address(kAudioHardwarePropertyProcessObjectList)
@@ -37,6 +38,7 @@ func stringProperty(_ object: AudioObjectID, _ selector: AudioObjectPropertySele
     return value.takeRetainedValue() as String
 }
 
+/// UID текущего устройства вывода.
 func defaultOutputUID() -> String? {
     var addr = address(kAudioHardwarePropertyDefaultOutputDevice)
     var device = AudioObjectID(0)

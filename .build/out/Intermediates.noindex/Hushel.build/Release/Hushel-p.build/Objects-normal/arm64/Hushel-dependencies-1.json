@@ -441,6 +441,13 @@
     "moduleName" : "Security"
   },
   {
+    "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/System\/Library\/Frameworks\/ServiceManagement.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/volodymyrchaban\/Downloads\/Hushel\/.build\/out\/SDKExplicitPrecompiledModules\/ServiceManagement-4M1NG3MD73SH2XHH23H93GTZA.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "ServiceManagement"
+  },
+  {
     "clangModuleMapPath" : "\/Applications\/Xcode.app\/Contents\/Developer\/Platforms\/MacOSX.platform\/Developer\/SDKs\/MacOSX.sdk\/usr\/include\/Spatial\/module.modulemap",
     "clangModulePath" : "\/Users\/volodymyrchaban\/Downloads\/Hushel\/.build\/out\/SDKExplicitPrecompiledModules\/Spatial-28J4OZFLWC4NCAG07HI99B8PG.pcm",
     "isBridgingHeaderDependency" : false,

@@ -2,7 +2,7 @@ import AppKit
 import CoreAudio
 
 struct AudioApp: Identifiable, Equatable {
-    let id: String
+    let id: String               // bundle id приложения (группа процессов)
     let name: String
     let icon: NSImage
     let processObjects: [AudioObjectID]
@@ -15,18 +15,21 @@ struct AudioApp: Identifiable, Equatable {
 final class Mixer: ObservableObject {
     @Published private(set) var apps: [AudioApp] = []
     @Published private(set) var volumes: [String: Double]
+    @Published private(set) var eq: [String: [Double]]   // bundle id → усиление полос в дБ
 
     private var taps: [String: AppTap] = [:]
     private var timer: Timer?
-    private let defaultsKey = "volumes"
 
     init() {
-        volumes = UserDefaults.standard.dictionary(forKey: defaultsKey) as? [String: Double] ?? [:]
+        volumes = UserDefaults.standard.dictionary(forKey: "volumes") as? [String: Double] ?? [:]
+        eq = UserDefaults.standard.dictionary(forKey: "eq") as? [String: [Double]] ?? [:]
         refresh()
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] _ in
             self?.refresh()
         }
     }
+
+    // MARK: Volume
 
     func volume(for id: String) -> Double {
         volumes[id] ?? 1.0
@@ -34,12 +37,34 @@ final class Mixer: ObservableObject {
 
     func setVolume(_ value: Double, for id: String) {
         volumes[id] = value
-        UserDefaults.standard.set(volumes, forKey: defaultsKey)
-        if let app = apps.first(where: { $0.id == id }) {
-            apply(app)
-        }
+        UserDefaults.standard.set(volumes, forKey: "volumes")
+        reapply(id)
     }
 
+    // MARK: Equalizer
+
+    func eqGains(for id: String) -> [Double] {
+        let gains = eq[id] ?? []
+        return gains.count == EQProcessor.bandCount
+            ? gains
+            : Array(repeating: 0, count: EQProcessor.bandCount)
+    }
+
+    func setEQ(_ gains: [Double], for id: String) {
+        eq[id] = gains
+        UserDefaults.standard.set(eq, forKey: "eq")
+        reapply(id)
+    }
+
+    func removeEQ(for id: String) {
+        eq[id] = nil
+        UserDefaults.standard.set(eq, forKey: "eq")
+        reapply(id)
+    }
+
+    // MARK: Refresh
+
+    // Раз в пару секунд: ищем процессы со звуком, группируем по приложениям.
     func refresh() {
         let own = Bundle.main.bundleIdentifier
         let running = NSWorkspace.shared.runningApplications.filter { $0.bundleIdentifier != nil }
@@ -52,6 +77,7 @@ final class Mixer: ObservableObject {
             guard let bid = stringProperty(obj, kAudioProcessPropertyBundleID),
                   !bid.isEmpty, bid != own else { continue }
 
+            // Хелперы браузеров (com.google.Chrome.helper...) относим к основному приложению.
             let owner = running
                 .filter { app in
                     let b = app.bundleIdentifier!
@@ -92,9 +118,20 @@ final class Mixer: ObservableObject {
         }
     }
 
+    private func reapply(_ id: String) {
+        if let app = apps.first(where: { $0.id == id }) {
+            apply(app)
+        }
+    }
+
+    // Tap нужен, только если громкость < 100% или включён эквалайзер.
+    // Иначе приложение вообще не затрагивается.
     private func apply(_ app: AudioApp) {
         let gain = Float(volume(for: app.id))
-        if gain >= 0.999 {
+        let gains = eqGains(for: app.id)
+        let eqOn = gains.contains { abs($0) >= 0.05 }
+
+        if gain >= 0.999 && !eqOn {
             taps[app.id] = nil
             return
         }
@@ -102,11 +139,11 @@ final class Mixer: ObservableObject {
 
         if let tap = taps[app.id] {
             if tap.objects == app.processObjects && tap.outputUID == uid {
-                tap.volume = gain
+                tap.update(volume: gain, gains: gains)
                 return
             }
-            taps[app.id] = nil
+            taps[app.id] = nil   // список процессов или устройство вывода изменились
         }
-        taps[app.id] = AppTap(objects: app.processObjects, outputUID: uid, volume: gain)
+        taps[app.id] = AppTap(objects: app.processObjects, outputUID: uid, volume: gain, gains: gains)
     }
 }

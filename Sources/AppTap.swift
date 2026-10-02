@@ -1,21 +1,21 @@
 import CoreAudio
 import Foundation
 
-/// Перехватывает звук набора процессов, глушит оригинал и
-/// проигрывает его на текущее устройство вывода с коэффициентом `volume`.
+/// Перехватывает звук набора процессов, глушит оригинал и проигрывает его
+/// на текущее устройство вывода через эквалайзер и громкость.
 final class AppTap {
     let objects: [AudioObjectID]
     let outputUID: String
-    var volume: Float
 
+    private let processor = EQProcessor()
     private var tapID = AudioObjectID(kAudioObjectUnknown)
     private var aggID = AudioObjectID(kAudioObjectUnknown)
     private var procID: AudioDeviceIOProcID?
 
-    init?(objects: [AudioObjectID], outputUID: String, volume: Float) {
+    init?(objects: [AudioObjectID], outputUID: String, volume: Float, gains: [Double]) {
         self.objects = objects
         self.outputUID = outputUID
-        self.volume = volume
+        processor.gain = volume
 
         let desc = CATapDescription(stereoMixdownOfProcesses: objects)
         desc.uuid = UUID()
@@ -47,24 +47,17 @@ final class AppTap {
             return nil
         }
 
-        let queue = DispatchQueue(label: "volumemixer.io", qos: .userInteractive)
-        let status = AudioDeviceCreateIOProcIDWithBlock(&procID, aggID, queue) {
-            [weak self] _, inData, _, outData, _ in
-            guard let self else { return }
-            let gain = self.volume
-            let input = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer(mutating: inData))
-            let output = UnsafeMutableAudioBufferListPointer(outData)
+        processor.configure(sampleRate: Self.nominalRate(of: aggID), gains: gains)
 
-            for i in 0..<min(input.count, output.count) {
-                guard let src = input[i].mData, let dst = output[i].mData else { continue }
-                let bytes = Int(min(input[i].mDataByteSize, output[i].mDataByteSize))
-                let count = bytes / MemoryLayout<Float>.size
-                let s = src.assumingMemoryBound(to: Float.self)
-                let d = dst.assumingMemoryBound(to: Float.self)
-                for j in 0..<count {
-                    d[j] = s[j] * gain
-                }
-            }
+        // Колбэк держит только processor, а не сам AppTap:
+        // так AppTap никогда не освобождается внутри аудио-потока.
+        let processor = self.processor
+        let queue = DispatchQueue(label: "hushel.io", qos: .userInteractive)
+        let status = AudioDeviceCreateIOProcIDWithBlock(&procID, aggID, queue) { _, inData, _, outData, _ in
+            processor.process(
+                input: UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer(mutating: inData)),
+                output: UnsafeMutableAudioBufferListPointer(outData)
+            )
         }
 
         guard status == noErr, let procID, AudioDeviceStart(aggID, procID) == noErr else {
@@ -74,6 +67,23 @@ final class AppTap {
     }
 
     deinit { stop() }
+
+    func update(volume: Float, gains: [Double]) {
+        processor.gain = volume
+        processor.update(gains: gains)
+    }
+
+    private static func nominalRate(of device: AudioObjectID) -> Double {
+        var addr = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyNominalSampleRate,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var rate = Float64(0)
+        var size = UInt32(MemoryLayout<Float64>.size)
+        let status = AudioObjectGetPropertyData(device, &addr, 0, nil, &size, &rate)
+        return status == noErr && rate > 0 ? rate : 48000
+    }
 
     private func stop() {
         if let procID, aggID != AudioObjectID(kAudioObjectUnknown) {

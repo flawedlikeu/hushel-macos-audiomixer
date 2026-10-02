@@ -5,11 +5,11 @@
       "name" : "Hushel",
       "path" : "/Users/volodymyrchaban/Downloads/Hushel",
       "projects" : [
-        "f8be0e8bc3e64ad6301a47584ef31b8de5399a6315b1f4ae1444af7237718eef",
+        "aee38400d855fd2e2beada3e5604df3f78e45d6c25081363c046273971696bab",
         "b09a4d22a62c41b0f2d5e120b18d2d0fa6405fc769a83008040b0ba4e7088803"
       ]
     },
-    "signature" : "891ec356298f7ab7d73b75dffa9907d6ace760072d8c4c5bb11ac008b2a29c2c",
+    "signature" : "8f348e07d475a96d55d2ef6e096a41186a70c572a0afb8cd80feb18273701ed5",
     "type" : "workspace"
   },
   {
@@ -225,8 +225,24 @@
               {
                 "fileType" : "sourcecode.swift",
                 "guid" : "PACKAGE:hushel::MAINGROUP::REF_2::REF_3",
+                "name" : "EQ.swift",
+                "path" : "EQ.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:hushel::MAINGROUP::REF_2::REF_4",
                 "name" : "Mixer.swift",
                 "path" : "Mixer.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:hushel::MAINGROUP::REF_2::REF_5",
+                "name" : "Settings.swift",
+                "path" : "Settings.swift",
                 "sourceTree" : "<group>",
                 "type" : "file"
               }
@@ -266,8 +282,24 @@
               {
                 "fileType" : "sourcecode.swift",
                 "guid" : "PACKAGE:hushel::MAINGROUP::REF_3::REF_3",
+                "name" : "EQ.swift",
+                "path" : "EQ.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:hushel::MAINGROUP::REF_3::REF_4",
                 "name" : "Mixer.swift",
                 "path" : "Mixer.swift",
+                "sourceTree" : "<group>",
+                "type" : "file"
+              },
+              {
+                "fileType" : "sourcecode.swift",
+                "guid" : "PACKAGE:hushel::MAINGROUP::REF_3::REF_5",
+                "name" : "Settings.swift",
+                "path" : "Settings.swift",
                 "sourceTree" : "<group>",
                 "type" : "file"
               }
@@ -291,12 +323,12 @@
       "projectIsPackage" : "true",
       "projectName" : "Hushel",
       "targets" : [
-        "2a3a75939970b23f64f14cb030b101ca57b47ce7afb0714758d79d1880c2377d",
-        "93212150a37bba26846b4e01ba8706ba1b85c188dcff60018c26769092b14c89",
+        "4b823c55ac6878c80d1a099491f42066f6589c3c5edc4824e50382769cf772db",
+        "f561ab4ef7956f9860bd40f34413298ba1ab7bd9b4b9a321a5ea24f81fa37d23",
         "0330a161eabf97fe2c1d3af79bcbfd7ab36811f9abb62b823107408c1bdec9c0"
       ]
     },
-    "signature" : "f8be0e8bc3e64ad6301a47584ef31b8de5399a6315b1f4ae1444af7237718eef",
+    "signature" : "aee38400d855fd2e2beada3e5604df3f78e45d6c25081363c046273971696bab",
     "type" : "project"
   },
   {
@@ -436,6 +468,24 @@
 
               ],
               "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:hushel::MAINGROUP::REF_2::REF_4",
+              "guid" : "PACKAGE-PRODUCT:hushel_Hushel.Hushel::BUILDPHASE_0::4",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:hushel::MAINGROUP::REF_2::REF_5",
+              "guid" : "PACKAGE-PRODUCT:hushel_Hushel.Hushel::BUILDPHASE_0::5",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
             }
           ],
           "guid" : "PACKAGE-PRODUCT:hushel_Hushel.Hushel::BUILDPHASE_0",
@@ -461,7 +511,7 @@
       "productTypeIdentifier" : "com.apple.product-type.tool",
       "type" : "standard"
     },
-    "signature" : "2a3a75939970b23f64f14cb030b101ca57b47ce7afb0714758d79d1880c2377d",
+    "signature" : "4b823c55ac6878c80d1a099491f42066f6589c3c5edc4824e50382769cf772db",
     "type" : "target"
   },
   {
@@ -632,6 +682,24 @@
 
               ],
               "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:hushel::MAINGROUP::REF_3::REF_4",
+              "guid" : "PACKAGE-TARGET:Hushel-18EFDC426B0C2F-testable::BUILDPHASE_0::4",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
+            },
+            {
+              "codeSignOnCopy" : "false",
+              "fileReference" : "PACKAGE:hushel::MAINGROUP::REF_3::REF_5",
+              "guid" : "PACKAGE-TARGET:Hushel-18EFDC426B0C2F-testable::BUILDPHASE_0::5",
+              "platformFilters" : [
+
+              ],
+              "removeHeadersOnCopy" : "false"
             }
           ],
           "guid" : "PACKAGE-TARGET:Hushel-18EFDC426B0C2F-testable::BUILDPHASE_0",
@@ -657,7 +725,7 @@
       "productTypeIdentifier" : "org.swift.product-type.common.object",
       "type" : "standard"
     },
-    "signature" : "93212150a37bba26846b4e01ba8706ba1b85c188dcff60018c26769092b14c89",
+    "signature" : "f561ab4ef7956f9860bd40f34413298ba1ab7bd9b4b9a321a5ea24f81fa37d23",
     "type" : "target"
   },
   {

@@ -9,6 +9,8 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS"
 cp .build/release/Hushel "$APP/Contents/MacOS/Hushel"
 cp Info.plist "$APP/Contents/Info.plist"
+mkdir -p "$APP/Contents/Resources"
+cp -R Resources/*.lproj "$APP/Contents/Resources/"
 codesign --force --sign - "$APP"
 
 echo "Готово: $APP"

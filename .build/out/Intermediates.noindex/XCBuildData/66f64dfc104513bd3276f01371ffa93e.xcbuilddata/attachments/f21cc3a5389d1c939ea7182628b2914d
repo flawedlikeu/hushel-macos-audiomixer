@@ -23,9 +23,19 @@
     "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/CoreAudioHelpers.bc",
     "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/CoreAudioHelpers.o"
   },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/EQ.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/EQ.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/EQ.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/EQ.o"
+  },
   "/Users/volodymyrchaban/Downloads/Hushel/Sources/Mixer.swift" : {
     "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.o",
     "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.bc",
     "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Mixer.o"
+  },
+  "/Users/volodymyrchaban/Downloads/Hushel/Sources/Settings.swift" : {
+    "index-unit-output-path" : "/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Settings.o",
+    "llvm-bc" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Settings.bc",
+    "object" : "/Users/volodymyrchaban/Downloads/Hushel/.build/out/Intermediates.noindex/Hushel.build/Release/Hushel-p.build/Objects-normal/arm64/Settings.o"
   }
 }

@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>ru</string>
+    </array>
     <key>CFBundleIdentifier</key>
     <string>com.local.Hushel</string>
     <key>CFBundleName</key>
@@ -19,6 +26,6 @@
     <key>LSUIElement</key>
     <true/>
     <key>NSAudioCaptureUsageDescription</key>
-    <string>Нужен доступ к звуку приложений, чтобы регулировать их громкость по отдельности.</string>
+    <string>Hushel needs access to app audio to adjust the volume of each app separately.</string>
 </dict>
 </plist>
